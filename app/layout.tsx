@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { FONT_NOTOSANSKR } from "@/public/assets/font";
 import { Toaster } from "@/components/ui/toast/toaster";
+/** UI 컴포넌트 */
+import { AsideSection } from "@/components/common";
+/** 폰트 */
+import { FONT_NOTOSANSKR } from "@/public/assets/fonts";
+/** 스타일 */
 import "@/public/styles/globals.css";
 import "@/public/styles/main.scss";
-import { AsideSection } from "@/components/common";
 
 export const metadata: Metadata = {
   title: "TODO-BOARD 만들기",
@@ -16,16 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={FONT_NOTOSANSKR.className}
-      >
+    <html lang="ko">
+      <body className={FONT_NOTOSANSKR.className}>
         <div className="page">
           <AsideSection />
           <main className="page__main">{children}</main>
         </div>
         <Toaster />
-        {children}
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
+/** UI 컴포넌트 */
 import { Button } from "@/components/ui";
 
-const InitPage = () => {
+function InitPage() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center gap-5 mb-6">
@@ -12,7 +13,7 @@ const InitPage = () => {
       </div>
       <Button className="text-[#E79057] bg-transparent border border-[#E79057] hover:bg-[#FFF9F5] w-[180px]">Add New Page</Button>
     </div>
-  )
+  );
 }
 
 export default InitPage;
