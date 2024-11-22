@@ -17,6 +17,7 @@ $ npx shadcn@latest add toast
 $ npm i sass
 $ npm i npm i @uiw/react-markdown-editor
 $ npm install @supabase/supabase-js
+$ npm install nanoid
 ```
 
 -   App Router 기반 페이지 라우팅이 이루어지니 만큼 `app` 폴더 하위에는 페이지에 관련된 파일이 위치합니다.

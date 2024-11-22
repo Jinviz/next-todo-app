@@ -37,7 +37,7 @@ function AsideSection() {
         .from("tasks")
         .insert([{ title: null, start_date: null, end_date: null, boards: null }])
         .select();
-
+      console.log(data, status);
       if (status === 201 && data !== null) {
         toast({
           title: "새로운 TASK가 생성되었습니다.",
