@@ -9,9 +9,9 @@ import { useEffect, useState } from "react";
 import { Task } from "@/types";
 
 function AsideSection() {
-  const { toast } = useToast();
   const router = useRouter();
   const { id } = useParams();
+  const { toast } = useToast();
   const [tasks, setTasks] = useState<Task[]>([]);
 
   /** 우리가 생성한 tasks 테이블 데이터 전체 조회 */
@@ -79,9 +79,9 @@ function AsideSection() {
           ) : (
             tasks.map((task: Task) => {
               return (
-                <li key={task.id} className="bg-[#F5F5F5] min-h-9 flex items-center gap-2 py-2 px-[10px] rounded-sm text-sm cursor-pointer">
-                  <div className="h-[6px] w-[6px] rounded-full bg-[#00F38D]"></div>
-                  {task.title ? task.title : "등록된 제목이 없습니다."}
+                <li key={task.id} className={`${task.id === Number(id) && "bg-[#F5F5F5]"} min-h-9 flex items-center gap-2 py-2 px-[10px] rounded-sm text-sm cursor-pointer`}>
+                  <div className={`${task.id === Number(id) ? "bg-[#00F38D]" : "bg-neutral-400"} h-[6px] w-[6px] rounded-full`}></div>
+                  <span className={`${task.id !== Number(id) && `text-neutral-400`}`}>{task.title ? task.title : "등록된 제목이 없습니다."}</span>
                 </li>
               );
             })

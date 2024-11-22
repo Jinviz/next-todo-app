@@ -12,6 +12,7 @@ function InitPage() {
 
   /** Add New Page 버튼을 클릭하였을 때, TASK 생성 */
   const handleCreateTask = async () => {
+    console.log("click!");
     try {
       const { data, status } = await supabase
         .from("tasks")
