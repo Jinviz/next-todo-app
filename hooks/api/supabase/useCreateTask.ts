@@ -7,7 +7,7 @@ import { useToast } from "@/hooks/use-toast";
 function useCreateTask() {
   const router = useRouter();
   const { toast } = useToast();
-  const [_, setTasks] = useAtom(tasksAtom);
+  const [, setTasks] = useAtom(tasksAtom);
 
   const createTask = async () => {
     try {
