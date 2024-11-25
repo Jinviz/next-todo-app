@@ -1,33 +1,23 @@
 "use client"
 
 import { useRouter } from "next/navigation";
-import { useAtom } from "jotai";
-import { tasksAtom } from "@/stores/atoms";
 import { supabase } from "@/lib/supabase";
 import { useToast } from "@/hooks/use-toast";
 
-function useCreateTask() {
+function useDeleteTask() {
   const router = useRouter();
   const { toast } = useToast();
-  const [, setTasks] = useAtom(tasksAtom);
 
-  const createTask = async () => {
+  const deleleTask = async (taskId: number) => {
     try {
-      const { data, status, error } = await supabase
-        .from("tasks")
-        .insert([
-          {
-            title: "",
-            start_date: null,
-            end_date: null,
-            boards: [],
-          },
-        ])
-        .select();
+      const { status, error } = await supabase.from("tasks").delete().eq("id", taskId);
 
-      if (data && status === 201) {
-        setTasks((prevTasks) => [...prevTasks, data[0]]); // Jotai의 tasksAtom 상태 업데이트
-        router.push(`/board/${data[0].id}`);
+      if (status === 204) {
+        toast({
+          title: "선택한 TODO-LIST가 삭제되었습니다.",
+          description: "새로운 TASK가 생기시면 언제든 추가해주세요!",
+        });
+        router.push("/");
       }
       if (error) {
         toast({
@@ -46,7 +36,7 @@ function useCreateTask() {
       console.error("API 호출 중 오류 발생:", error);
     }
   };
-  return createTask;
+  return deleleTask;
 }
 
-export { useCreateTask };
+export { useDeleteTask };
